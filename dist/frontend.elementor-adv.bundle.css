@@ -1,0 +1,69 @@
+/*!*************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/main.scss ***!
+  \*************************************************************************************************************/
+/**
+ * Elementor widgets 
+ */
+.elementor-adv__widget-faq-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+.elementor-adv__widget-faq-heading-text {
+  max-width: calc(100% - 80px);
+}
+.elementor-adv__widget-faq-search {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+.elementor-adv__widget-faq-search input[type=text] {
+  display: none;
+}
+.elementor-adv__widget-faq-search .__icon-search {
+  display: inline-block;
+  width: 30px;
+  line-height: 0;
+}
+.elementor-adv__widget-faq-search .__icon-search svg {
+  width: 100%;
+}
+.elementor-adv__widget-faq-item {
+  border-bottom: solid 1px #eee;
+}
+.elementor-adv__widget-faq-item.__show .elementor-adv__widget-faq-item-question .__icon-toggle {
+  transform: rotateX(0deg);
+  -webkit-transform: rotateX(0deg);
+}
+.elementor-adv__widget-faq-item.__show .elementor-adv__widget-faq-item-answer {
+  display: block;
+}
+.elementor-adv__widget-faq-item-question {
+  padding: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.elementor-adv__widget-faq-item-question .__icon-toggle {
+  width: 20px;
+  min-width: 20px;
+  line-height: 0;
+  transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+}
+.elementor-adv__widget-faq-item-question .__icon-toggle svg {
+  width: 100%;
+}
+.elementor-adv__widget-faq-item-answer {
+  display: none;
+  margin-bottom: 1em;
+}

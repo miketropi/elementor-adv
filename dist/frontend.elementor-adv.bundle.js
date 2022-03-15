@@ -7,7 +7,6 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/main.js":
@@ -16,7 +15,18 @@
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/main.scss */ \"./src/scss/main.scss\");\n/**\r\n * Elementor ADV Script \r\n * \r\n */\n\n/**\r\n * SCSS\r\n */\n\n;\n\n(function (w, $) {\n  'use strict';\n\n  var Ready = function Ready() {};\n\n  $(Ready);\n})(window, jQuery);\n\n//# sourceURL=webpack://elementor-adv/./src/main.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/main.scss */ \"./src/scss/main.scss\");\n/* harmony import */ var _widgets_faq_width_search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/faq-width-search */ \"./src/widgets/faq-width-search.js\");\n/* harmony import */ var _widgets_faq_width_search__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_widgets_faq_width_search__WEBPACK_IMPORTED_MODULE_1__);\n/**\r\n * Elementor ADV Script \r\n * \r\n */\n\n/**\r\n * SCSS\r\n */\n\n/**\r\n * Widgets \r\n */\n\n\n;\n\n(function (w, $) {\n  'use strict';\n\n  var Ready = function Ready() {};\n\n  $(Ready);\n})(window, jQuery);\n\n//# sourceURL=webpack://elementor-adv/./src/main.js?");
+
+/***/ }),
+
+/***/ "./src/widgets/faq-width-search.js":
+/*!*****************************************!*\
+  !*** ./src/widgets/faq-width-search.js ***!
+  \*****************************************/
+/***/ ((module) => {
+
+eval("(function (w, $) {\n  'use strict';\n\n  var FAQ_ItemClickToogleHandle = function FAQ_ItemClickToogleHandle() {\n    $('body').on('click', '.elementor-adv__widget-faq-item-question', function (e) {\n      var $wrap = $(this).closest('.elementor-adv__widget-faq');\n      var $items = $wrap.find('.elementor-adv__widget-faq-item');\n      $(this).parent().addClass('__active-arrow').find('.elementor-adv__widget-faq-item-answer').stop(true, true).slideDown();\n      $(this).parent().siblings().removeClass('__active-arrow').find('.elementor-adv__widget-faq-item-answer').stop(true, true).slideUp();\n    });\n    /** init active */\n\n    $('.elementor-adv__widget-faq-item.__init-show').find('.elementor-adv__widget-faq-item-question').trigger('click');\n  };\n\n  var Ready = function Ready() {\n    FAQ_ItemClickToogleHandle();\n  };\n\n  $(Ready);\n})(window, jQuery);\n\nmodule.exports = {};\n\n//# sourceURL=webpack://elementor-adv/./src/widgets/faq-width-search.js?");
 
 /***/ }),
 
@@ -26,6 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://elementor-adv/./src/scss/main.scss?");
 
 /***/ })
@@ -57,6 +68,35 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports

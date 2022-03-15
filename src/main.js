@@ -8,6 +8,11 @@
  */
 import './scss/main.scss';
 
+/**
+ * Widgets 
+ */
+import './widgets/faq-width-search';
+
 ;((w, $) => {
   'use strict';
 

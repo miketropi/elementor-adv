@@ -66,6 +66,17 @@
         display: block;
       }
     }
+
+    &.__active-arrow {
+      
+      .elementor-adv__widget-faq-item-question {
+
+        .__icon-toggle {
+          transform: rotateX(0deg);
+          -webkit-transform: rotateX(0deg);
+        }
+      }
+    }
   }
 
   &__widget-faq-item-question {
@@ -73,6 +84,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    user-select: none;
 
     .__icon-toggle {
       width: 20px;
@@ -91,6 +103,5 @@
 
   &__widget-faq-item-answer {
     display: none;
-    margin-bottom: 1em;
   }
 }

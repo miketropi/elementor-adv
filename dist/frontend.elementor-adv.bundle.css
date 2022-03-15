@@ -45,11 +45,16 @@
 .elementor-adv__widget-faq-item.__show .elementor-adv__widget-faq-item-answer {
   display: block;
 }
+.elementor-adv__widget-faq-item.__active-arrow .elementor-adv__widget-faq-item-question .__icon-toggle {
+  transform: rotateX(0deg);
+  -webkit-transform: rotateX(0deg);
+}
 .elementor-adv__widget-faq-item-question {
   padding: 1em 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  user-select: none;
 }
 .elementor-adv__widget-faq-item-question .__icon-toggle {
   width: 20px;
@@ -65,5 +70,4 @@
 }
 .elementor-adv__widget-faq-item-answer {
   display: none;
-  margin-bottom: 1em;
 }

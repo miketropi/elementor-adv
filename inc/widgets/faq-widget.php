@@ -83,11 +83,11 @@ class Elementor_ADV_FAQ_Widget extends \Elementor\Widget_Base {
 				'default' => [
 					[
 						'question' => esc_html__('Question Item #1', 'elementor-adv'),
-						'answer' => __('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.', 'elementor-adv'),
+						'answer' => '<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>',
 					],
 					[
 						'question' => esc_html__('Question Item #2', 'elementor-adv'),
-						'answer' => __('Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.', 'elementor-adv'),
+						'answer' => '<p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>',
 					],
 				],
 				'title_field' => '{{{ question }}}',
@@ -271,8 +271,62 @@ class Elementor_ADV_FAQ_Widget extends \Elementor\Widget_Base {
 
   protected function render() {
     $settings = $this->get_settings_for_display();
+		$html_tag = elementor_adv_html_tag_options();
+    $this->add_render_attribute('faq_with_search', 'class', 'elementor-adv__widget elementor-adv__widget-faq');
     ob_start();
-    // print_r($settings);
+    ?>
+    <div <?php $this->print_render_attribute_string('faq_with_search'); ?>>
+      <div class="elementor-adv__widget-faq-entry">
+        <div class="elementor-adv__widget-faq-header">
+          <?php if($settings['heading_text']) { ?>
+          <<?php echo $html_tag[$settings['heading_html_tag']] ?>>
+            <?php echo $settings['heading_text']; ?>
+          </<?php echo $html_tag[$settings['heading_html_tag']] ?>>
+          <?php } ?>
+
+          <?php if($settings['enable_seach_string'] == 'yes') { ?>
+          <div class="elementor-adv__widget-faq-search">
+            <input type="text" placeholder="<?php _e('Looing for somethings?', 'elementor-adv') ?>"/>
+            <a class="__icon-search"><?php echo elementor_adv_icon_svg('search'); ?></a>
+          </div>
+          <?php } ?>
+        </div>
+
+        <div class="elementor-adv__widget-faq-items">
+          <?php if($settings['faq_items'] && count($settings['faq_items']) > 0) {
+          foreach($settings['faq_items'] as $index => $item) {
+            $answer_setting_key = $this->get_repeater_setting_key('answer', 'faq_items', $index);
+            $this->add_inline_editing_attributes($answer_setting_key, 'advanced');
+
+            $repeater_setting_key = $this->get_repeater_setting_key('question', 'faq_items', $index);
+            $this->add_inline_editing_attributes($repeater_setting_key, 'none');
+
+            $classShowFirstItem = ($settings['open_first_item'] == 'yes' && $index == 0) ? '__init-show' : '';
+          ?>
+          <div class="elementor-adv__widget-faq-item <?php echo $classShowFirstItem; ?>">
+            <?php  if(!empty($item['question'])) { ?>
+            <div class="elementor-adv__widget-faq-item-question">
+              <<?php echo $html_tag[$settings['question_html_tag']]; ?> 
+                <?php $this->print_render_attribute_string($repeater_setting_key) ?>>
+                <?php echo $item['question']; ?>
+              </<?php echo $html_tag[$settings['question_html_tag']]; ?>>
+              <span class="__icon-toggle">
+                <?php echo elementor_adv_icon_svg('arrow-down'); ?>
+              </span>
+            </div>
+
+            <div class="elementor-adv__widget-faq-item-answer">
+              <div <?php $this->print_render_attribute_string($answer_setting_key) ?>>
+                <?php echo $item['answer']; ?>
+              </div>
+            </div> 
+            <?php } # endif ?>
+          </div> <!-- .elementor-adv__widget-faq-item -->
+          <?php } } # endforeach & endif ?>
+        </div>
+      </div>
+    </div>
+    <?php 
     echo ob_get_clean();
   }
 
@@ -312,18 +366,8 @@ class Elementor_ADV_FAQ_Widget extends \Elementor\Widget_Base {
             var classShowFirstItem = (index == 0 && settings.open_first_item == 'yes') ? '__show' : '';
           #>
             <div class="elementor-adv__widget-faq-item {{{ classShowFirstItem }}}">
-              <# if(item.answer) { #>
-              <div 
-                class="elementor-adv__widget-faq-item-question"
-                onClick="(function(e) {
-                  let classes = e.target.parentElement.classList;
-                  console.log(classes);
-                  if([...classes].includes('__show')) {
-                    e.target.parentElement.classList.remove('__show');
-                  } else {
-                    e.target.parentElement.classList.add('__show');
-                  }
-                })(arguments[0]); return false;" >
+              <# if(item.question) { #>
+              <div class="elementor-adv__widget-faq-item-question" >
                 <{{{ html_tag[settings.question_html_tag] }}} {{{ view.getRenderAttributeString(repeater_setting_key) }}}>
                   {{{ item.question }}}
                 </{{{ html_tag[settings.question_html_tag] }}}>

@@ -13,6 +13,7 @@
 }
 .elementor-adv__widget-faq-heading-text {
   max-width: calc(100% - 80px);
+  text-align: center;
 }
 .elementor-adv__widget-faq-search {
   position: absolute;
@@ -23,6 +24,8 @@
   align-items: center;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
 }
 .elementor-adv__widget-faq-search input[type=text] {
   display: none;
@@ -34,6 +37,12 @@
 }
 .elementor-adv__widget-faq-search .__icon-search svg {
   width: 100%;
+}
+.elementor-adv__widget-faq-search.__active {
+  width: 100%;
+}
+.elementor-adv__widget-faq-search.__active input[type=text] {
+  display: block;
 }
 .elementor-adv__widget-faq-item {
   border-bottom: solid 1px #eee;

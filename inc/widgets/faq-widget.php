@@ -273,13 +273,15 @@ class Elementor_ADV_FAQ_Widget extends \Elementor\Widget_Base {
     $settings = $this->get_settings_for_display();
 		$html_tag = elementor_adv_html_tag_options();
     $this->add_render_attribute('faq_with_search', 'class', 'elementor-adv__widget elementor-adv__widget-faq');
+		$this->add_render_attribute('heading_text', 'class', 'elementor-adv__widget-faq-heading-text');
+		$this->add_inline_editing_attributes('heading_text', 'none');
     ob_start();
     ?>
     <div <?php $this->print_render_attribute_string('faq_with_search'); ?>>
       <div class="elementor-adv__widget-faq-entry">
         <div class="elementor-adv__widget-faq-header">
           <?php if($settings['heading_text']) { ?>
-          <<?php echo $html_tag[$settings['heading_html_tag']] ?>>
+          <<?php echo $html_tag[$settings['heading_html_tag']] ?> <?php $this->print_render_attribute_string('heading_text') ?>>
             <?php echo $settings['heading_text']; ?>
           </<?php echo $html_tag[$settings['heading_html_tag']] ?>>
           <?php } ?>
@@ -297,10 +299,8 @@ class Elementor_ADV_FAQ_Widget extends \Elementor\Widget_Base {
           foreach($settings['faq_items'] as $index => $item) {
             $answer_setting_key = $this->get_repeater_setting_key('answer', 'faq_items', $index);
             $this->add_inline_editing_attributes($answer_setting_key, 'advanced');
-
             $repeater_setting_key = $this->get_repeater_setting_key('question', 'faq_items', $index);
             $this->add_inline_editing_attributes($repeater_setting_key, 'none');
-
             $classShowFirstItem = ($settings['open_first_item'] == 'yes' && $index == 0) ? '__init-show' : '';
           ?>
           <div class="elementor-adv__widget-faq-item <?php echo $classShowFirstItem; ?>">
@@ -359,10 +359,8 @@ class Elementor_ADV_FAQ_Widget extends \Elementor\Widget_Base {
           _.each(settings.faq_items, (item, index) => {
             var answer_setting_key = view.getRepeaterSettingKey('answer', 'faq_items', index);
             view.addInlineEditingAttributes(answer_setting_key, 'advanced');
-
             var repeater_setting_key = view.getRepeaterSettingKey('question', 'faq_items', index);
             view.addInlineEditingAttributes(repeater_setting_key, 'none');
-
             var classShowFirstItem = (index == 0 && settings.open_first_item == 'yes') ? '__show' : '';
           #>
             <div class="elementor-adv__widget-faq-item {{{ classShowFirstItem }}}">
